@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  street: MyString
+  city: MyString
+  state: MyString
+  zipcode: MyString
+  status: 1
+  onboard_date: 2019-04-29 16:07:44
+  offboard_date: 2019-04-29 16:07:44
+  recent_request_date: 2019-04-29 16:07:44
+  account_current: false
+
+two:
+  name: MyString
+  street: MyString
+  city: MyString
+  state: MyString
+  zipcode: MyString
+  status: 1
+  onboard_date: 2019-04-29 16:07:44
+  offboard_date: 2019-04-29 16:07:44
+  recent_request_date: 2019-04-29 16:07:44
+  account_current: false
