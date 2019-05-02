@@ -10,7 +10,7 @@ class CreateClients < ActiveRecord::Migration[5.2]
       t.datetime :onboard_date
       t.datetime :offboard_date
       t.datetime :recent_request_date
-      t.boolean :account_current default: true
+      t.boolean :account_current, default: true
 
       t.timestamps
     end
