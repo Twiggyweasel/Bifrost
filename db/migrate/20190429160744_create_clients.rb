@@ -7,6 +7,8 @@ class CreateClients < ActiveRecord::Migration[5.2]
       t.string :state
       t.string :zipcode
       t.integer :status
+      t.integer :service_type
+      t.integer :payment_method
       t.datetime :onboard_date
       t.datetime :offboard_date
       t.datetime :recent_request_date

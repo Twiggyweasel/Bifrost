@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_29_160744) do
+ActiveRecord::Schema.define(version: 2019_05_03_004415) do
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
@@ -19,12 +19,31 @@ ActiveRecord::Schema.define(version: 2019_04_29_160744) do
     t.string "state"
     t.string "zipcode"
     t.integer "status"
+    t.integer "service_type"
+    t.integer "payment_method"
     t.datetime "onboard_date"
     t.datetime "offboard_date"
     t.datetime "recent_request_date"
     t.boolean "account_current", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.string "ticket_number"
+    t.text "request_summary"
+    t.text "request_detail"
+    t.text "outcome_summary"
+    t.text "outcome_detail"
+    t.datetime "due"
+    t.datetime "resolved"
+    t.datetime "last_response"
+    t.integer "severity"
+    t.integer "status"
+    t.integer "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_tickets_on_client_id"
   end
 
 end
