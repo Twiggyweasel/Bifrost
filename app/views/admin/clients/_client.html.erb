@@ -1,6 +1,12 @@
-
-<div class='column is-half'>
-    <div class='box'> 
-        <%= link_to(client.name, admin_client_path(client)) %> - <%= client.status %>
-    </div>
-</div>
+<tr>
+    <td><%= client.id %></td>
+    <td><%= client.name %></td>
+    <td>tbd</td>
+    <td><%= client.status %></td>
+    <td>
+        <%= link_to(admin_client_path(client)) do %><i class="far fa-building" style='margin: 0 5px;'></i><% end %>
+        <%= link_to(edit_admin_client_path(client)) do %><i class="far fa-pencil" style='margin: 0 5px;'></i><% end %>
+        <i class="far fa-envelope" style='margin: 0 5px;'></i>
+    </td>
+    
+</tr>
