@@ -1,1 +1,75 @@
-<%= link_to("Return to Client List", admin_clients_path) %>
+<div class='container'>
+    <%= link_to("<< Clients", admin_clients_path) %>
+</div>
+<section class='section'>
+    <div class='container'>
+        <div class='columns'>
+            <div class='column is-three-quarters'>
+                <h1 class='title is-inline-block'><%= @client.name %></h1>
+                <span class='is-pulled-right'>
+                    <%= link_to('#') do %>
+                        <i class='far fa-envelope fa-lg' style='margin-top: 10px; margin-right: 10px'></i>
+                    <% end %>
+                    <%= link_to(edit_admin_client_path(@client)) do %>
+                        <i class='far fa-cog fa-lg' style='margin-top: 10px margin-right: 10px'></i>
+                    <% end %>
+                </span>
+                <div class='box'></div>
+            </div>
+            <div class='column'>
+                <h1 class='title is-inline-block'>Primary Contact</h1>
+                <span class='is-pulled-right'>
+                    <%= link_to('#') do %>
+                        <i class="far fa-user-cog fa-lg" style='margin-top: 10px;'></i>
+                    <% end %>
+                </span>
+                <div class='box'>
+                    <h3 class='has-text-weight-semibold'>Jimmy Test</h3>
+                    <h4>Lead Banana Maker<h4>
+                    <br />
+                    <span class='has-text-weight-semibold'>Contact Details</span>
+                    <ul>
+                        <li><i class="far fa-phone"></i> 913-555-9876</li>
+                        <li><i class="far fa-at"></i> test@me.com</li>
+                    </ul>
+                </div>
+        </div>
+    </div>
+</section>
+<section class='section'>
+    <div class='container'>
+        <div class='columns'>
+            <div class='column is-three-quarters'>
+                <h1 class='title is-inline-block'>Projects</h1>
+                <span class='is-pulled-right'>
+                    <%= link_to('#', class: 'button is-primary') do %>
+                        <i class="far fa-plus-circle" style='margin-right: 10px;'></i>Create Project
+                    <% end %>    
+                </span>
+                <div class='box'>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class='section'>
+    <div class='container'>
+        <div class='columns'>
+            <div class='column is-three-quarters'>
+                <h1 class='title is-inline-block'>Tickets</h1>
+                <span class='is-pulled-right'>
+                    <%= link_to('#', class: 'button is-primary') do %>
+                        <i class="far fa-plus-circle" style='margin-right: 10px;'></i>Create Ticket
+                    <% end %>    
+                </span>
+                <div class='box'>
+                    <ul>
+                    <% @client.tickets.each do |t| %>
+                        <li><%= t.ticket_number %></li>
+                    <% end %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -5,6 +5,8 @@ class Client < ApplicationRecord
     enum payment_method: [ :credit_card, :cash, :check, :undefined]
 #Relationships
     has_many :tickets
+    has_many :users
+    has_one :primary_contact, -> { where(is_primary: true) }, class_name: "User"
     
 #Validations
     validates :name, presence: true, length: { in: 3..60 }

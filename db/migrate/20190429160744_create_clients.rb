@@ -13,7 +13,8 @@ class CreateClients < ActiveRecord::Migration[5.2]
       t.datetime :offboard_date
       t.datetime :recent_request_date
       t.boolean :account_current, default: true
-
+      
+      t.references :user, foreign_key: true
       t.timestamps
     end
   end

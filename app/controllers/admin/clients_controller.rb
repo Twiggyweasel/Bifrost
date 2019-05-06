@@ -1,10 +1,12 @@
 class Admin::ClientsController < ApplicationController
+    layout 'admin' 
     def index
-        @clients = Client.all
+        @clients = Client.all.load
+        @tickets = Ticket.active.limit(3).load
     end
     
     def show
-        @client = Client.find(params[:id])
+        @client = Client.includes(:tickets).find(params[:id])
     end
     
     def new

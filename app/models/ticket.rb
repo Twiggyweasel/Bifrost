@@ -19,6 +19,10 @@ class Ticket < ApplicationRecord
     def assign_ticket_number
         self.update_column(:ticket_number, "Ticket-#{self.id}")
     end
+    
+    def days_pending
+        return "1"
+    end
 #Callbacks
     after_save :assign_ticket_number
 end
