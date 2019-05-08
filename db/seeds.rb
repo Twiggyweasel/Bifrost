@@ -5,16 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
 index = 1
+user_index = 1
 60.times do 
-    Client.create(name: "Company #{index}", street: '123 Main St', city: 'Mega City', state: 'KS', zipcode: '66215', status: 0, service_type: 0, payment_method: 0)
+    Client.create(name: Faker::Company.name, street: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zipcode: "66215", status: 0, service_type: 0, payment_method: 0, ein: Faker::Company.ein, industry: Faker::Company.industry, logo: Faker::Company.logo)
+    10.times do
+        if user_index == 1
+        User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, primary_phone: Faker::PhoneNumber.phone_number, client: Client.find(index), is_primary: true)
+        else 
+        User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, primary_phone: Faker::PhoneNumber.phone_number, client: Client.find(index), is_primary: false)
+        end
+    end
+    user_index = 1
     index += 1
-end
-4.times do 
-    Ticket.create(request_summary: "Big Request", request_detail: "I already told you this is a big request", severity: 3, status: 0, client: Client.first)
 end
 
 1500.times do
-    client_id = rand(1..60)    
-    Ticket.create(request_summary: "Big Request", request_detail: "I already told you this is a big request", severity: 3, status: 0, client: Client.find(client_id))
+    client_record = Client.find(rand(1..60))    
+    user_record = client_record.users[rand(1..10)]
+    Ticket.create(request_summary: Faker::Kpop.iii_groups, request_detail: Faker::Lorem.sentence(30, true), severity: rand(0..3), status: rand(0..2), client: client_record, user: user_record)
 end

@@ -1,0 +1,41 @@
+<% if @ticket.errors.any? %>
+    <section class='section'>
+        <div class='container'>
+            <div class='columns'>
+                <div class='column is-half is-offset-one-quarter'>
+                    <ul>
+                    <% @ticket.errors.full_messages.each do |e| %>
+                        <li><%= e %></i>
+                    <% end %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+<% end %>
+<section class='section'>
+    <div class='container'>
+        <div class='columns'>
+            <div class='column is-half is-offset-one-quarter'>
+                <h1 class='title'>New Ticket</h1>
+                <%= form_for [:admin, @ticket] do |f| %>
+                    <%= f.label :request_summary, class: 'label' %>
+                    <%= f.text_field :request_summary, class: 'input' %>
+                    
+                    <%= f.label :request_detail, class: 'label' %>
+                    <%= f.text_area :request_detail, rows: 10,  class: 'textarea' %>
+                    <%= f.label :severity, class: 'label' %>
+                    <div class='select'>
+                        <%= f.select :severity, Ticket.severities.keys.map { |w| [w.humanize, w] } %>
+                    </div>
+                    
+                    <%= f.hidden_field :client_id, value: 1 %>
+                    <%= f.hidden_field :user_id, value: 1 %>
+                    <%= f.hidden_field :status, value: "active" %>
+                    
+                    <%= f.submit 'Submit Ticket', class: 'button is-success' %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</section>

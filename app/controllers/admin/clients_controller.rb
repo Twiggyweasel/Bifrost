@@ -6,7 +6,7 @@ class Admin::ClientsController < ApplicationController
     end
     
     def show
-        @client = Client.includes(:tickets).find(params[:id])
+        @client = Client.includes([tickets: :user], :primary_contact).find(params[:id])
     end
     
     def new

@@ -16,7 +16,7 @@ class Client < ApplicationRecord
     validates :street, presence: true, length: { in: 6.. 40 }
     validates :city, presence: true, length: { in: 3..25 }
     validates :state, presence: true, length: { is: 2 }
-    validates :zipcode, presence: true, length: { is: 5 }, numericality: true
+    validates :zipcode, presence: true, numericality: true
 
 
 #Methods

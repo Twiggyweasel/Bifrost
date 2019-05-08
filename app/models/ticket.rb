@@ -4,6 +4,7 @@ class Ticket < ApplicationRecord
     enum severity: [ :P1, :P2, :P3, :P4]
 #Relationships  
     belongs_to :client
+    belongs_to :user
   
 #validations
     validates :ticket_number, presence: true, allow_nil: true

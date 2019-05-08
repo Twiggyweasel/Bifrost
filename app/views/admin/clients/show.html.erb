@@ -23,16 +23,7 @@
                         <i class="far fa-user-cog fa-lg" style='margin-top: 10px;'></i>
                     <% end %>
                 </span>
-                <div class='box'>
-                    <h3 class='has-text-weight-semibold'>Jimmy Test</h3>
-                    <h4>Lead Banana Maker<h4>
-                    <br />
-                    <span class='has-text-weight-semibold'>Contact Details</span>
-                    <ul>
-                        <li><i class="far fa-phone"></i> 913-555-9876</li>
-                        <li><i class="far fa-at"></i> test@me.com</li>
-                    </ul>
-                </div>
+                <%= render 'primary_contact', pc: @client.primary_contact %>
         </div>
     </div>
 </section>
@@ -58,14 +49,14 @@
             <div class='column is-three-quarters'>
                 <h1 class='title is-inline-block'>Tickets</h1>
                 <span class='is-pulled-right'>
-                    <%= link_to('#', class: 'button is-primary') do %>
+                    <%= link_to(new_admin_ticket_path, class: 'button is-primary') do %>
                         <i class="far fa-plus-circle" style='margin-right: 10px;'></i>Create Ticket
                     <% end %>    
                 </span>
                 <div class='box'>
                     <ul>
                     <% @client.tickets.each do |t| %>
-                        <li><%= t.ticket_number %></li>
+                        <li><%= t.ticket_number %> - <%= t.user.full_name %> - <%= t.request_summary %></li>
                     <% end %>
                     </ul>
                 </div>

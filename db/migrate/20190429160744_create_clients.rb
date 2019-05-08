@@ -2,7 +2,10 @@ class CreateClients < ActiveRecord::Migration[5.2]
   def change
     create_table :clients do |t|
       t.string :name
+      t.string :industry
+      t.string :logo
       t.string :street
+      t.string :ein
       t.string :city
       t.string :state
       t.string :zipcode
