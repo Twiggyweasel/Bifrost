@@ -5,7 +5,7 @@
     <div class='container'>
         <div class='columns'>
             <div class='column is-three-quarters'>
-                <h1 class='title is-inline-block'><%= @client.name %></h1>
+                <h1 class='title is-inline-block' style='margin-bottom: 5px;'><%= @client.name %></h1>
                 <span class='is-pulled-right'>
                     <%= link_to('#') do %>
                         <i class='far fa-envelope fa-lg' style='margin-top: 10px; margin-right: 10px'></i>
@@ -14,7 +14,13 @@
                         <i class='far fa-cog fa-lg' style='margin-top: 10px margin-right: 10px'></i>
                     <% end %>
                 </span>
-                <div class='box'></div>
+                <hr style='margin: 10px 0'/>
+                <div>
+                    <address>
+                        <%= @client.street %><br />
+                        <%= @client.city %> <%= @client.state %>, <%= @client.zipcode %>
+                    </address>
+                </div>
             </div>
             <div class='column'>
                 <h1 class='title is-inline-block'>Primary Contact</h1>
@@ -53,13 +59,19 @@
                         <i class="far fa-plus-circle" style='margin-right: 10px;'></i>Create Ticket
                     <% end %>    
                 </span>
-                <div class='box'>
-                    <ul>
-                    <% @client.tickets.each do |t| %>
-                        <li><%= t.ticket_number %> - <%= t.user.full_name %> - <%= t.request_summary %></li>
-                    <% end %>
-                    </ul>
-                </div>
+                <table class='table is-hoverable is-fullwidth clickable_row'>
+                    <thead>
+                        <tr>
+                            <th>Ticket Number</th>
+                            <th>Logged By</th>
+                            <th>Summary</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%= render partial: 'ticket', collection: @client.tickets %>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

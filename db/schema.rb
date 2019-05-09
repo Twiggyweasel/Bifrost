@@ -36,9 +36,9 @@ ActiveRecord::Schema.define(version: 2019_05_03_004415) do
 
   create_table "tickets", force: :cascade do |t|
     t.string "ticket_number"
-    t.text "request_summary"
+    t.string "request_summary"
     t.text "request_detail"
-    t.text "outcome_summary"
+    t.string "outcome_summary"
     t.text "outcome_detail"
     t.datetime "due"
     t.datetime "resolved"
