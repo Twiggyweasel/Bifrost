@@ -1,7 +1,7 @@
 <tr data-url="<%= admin_client_path(client) %>">
     <td><%= client.id %></td>
     <td><%= client.name %></td>
-    <td>tbd</td>
+    <td><%= client.primary_contact.full_name %></td>
     <td><%= client.status %></td>
     <td>
         <%= link_to(edit_admin_client_path(client)) do %><i class="far fa-pencil" style='margin: 0 5px;'></i><% end %>

@@ -3,8 +3,5 @@ class Admin::PagesController < ApplicationController
     def dashboard
         @tickets = Ticket.active
     end
-    
-    def tickets
-        @tickets = Ticket.includes(:client).all
-    end
+
 end

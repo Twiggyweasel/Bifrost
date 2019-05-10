@@ -3,6 +3,7 @@ class Client < ApplicationRecord
     enum status: [ :active, :inactive, :potential ]
     enum service_type: [ :contract, :billable, :pending]
     enum payment_method: [ :credit_card, :cash, :check, :undefined]
+    paginates_per weasel10
 #Relationships
     has_many :tickets
     has_many :users

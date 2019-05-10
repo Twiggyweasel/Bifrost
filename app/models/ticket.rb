@@ -2,6 +2,7 @@ class Ticket < ApplicationRecord
 #defaults
     enum status: [ :active, :inactive, :potential, :resolved ]
     enum severity: [ :P1, :P2, :P3, :P4]
+    paginates_per 10  
 #Relationships  
     belongs_to :client
     belongs_to :user

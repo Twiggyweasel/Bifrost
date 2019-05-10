@@ -1,0 +1,22 @@
+<section class='section'>
+    <div class='container'>
+        <div class='columns'>
+            <div class='column'>
+                <table class='table'>
+                    <thead>
+                        <tr>
+                            <th><%= sort_link(@q, :ticket_number, 'Ticket Number') %></th>
+                            <th><%= sort_link(@q, :user_first_name, 'Full Name') %></th>
+                            <th><%= sort_link(@q, :client_name, 'Client') %></th>
+                            <th><%= sort_link(@q, :severity) %></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%= render @tickets %>
+                    </tbody>
+                </table>  
+                <%= paginate @tickets %>
+            </div>
+        </div>
+    </div>
+</section>

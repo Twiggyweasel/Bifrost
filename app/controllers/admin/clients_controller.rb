@@ -1,7 +1,8 @@
 class Admin::ClientsController < ApplicationController
     layout 'admin' 
     def index
-        @clients = Client.all.load
+        @q = Client.ransack(params[:q])
+        @clients = @q.result.includes(:primary_contact).page(params[:page])
         @tickets = Ticket.active.limit(3).load
     end
     

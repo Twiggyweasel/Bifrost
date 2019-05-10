@@ -1,6 +1,11 @@
 class Admin::TicketsController < ApplicationController
     layout 'admin'
     before_action :set_ticket, only: [:show]
+    def index
+#        @tickets = Ticket.includes(:client).all
+        @q = Ticket.ransack(params[:q])
+        @tickets = @q.result.includes(:client, :user).page(params[:page])
+    end
     def show; end
   
     def new

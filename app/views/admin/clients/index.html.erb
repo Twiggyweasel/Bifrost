@@ -14,9 +14,9 @@
                 <table class='table is-fullwidth is-hoverable clickable_row'>
                     <thead style="background-color: #e9eff5;">
                         <tr>
-                            <th>ID</th>
-                            <th>Client Name</th>
-                            <th>Primary Contact</th>
+                            <th><%= sort_link(@q, :id) %></th>
+                            <th><%= sort_link(@q, :name, 'Client Name') %></th>
+                            <th><%= sort_link(@q, :primary_contact) %></th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -25,6 +25,7 @@
                         <%= render @clients %>  
                     </tbody>
                 </table>
+                <%= paginate @clients %>
             </div>
             <div class='column'>
                 <section>

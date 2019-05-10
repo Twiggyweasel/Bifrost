@@ -5,7 +5,6 @@ Rails.application.routes.draw do
     
     namespace :admin do
       get 'dashboard', to: 'pages#dashboard'
-      get 'tickets', to: 'pages#tickets'
       resources :clients
       resources :tickets
       resources :users
