@@ -1,0 +1,2 @@
+$(".page_tickets").html("<%= escape_javascript render(@tickets) %>"); 
+$("#paginator").html("<%= escape_javascript(paginate(@tickets, remote: true)) %>");

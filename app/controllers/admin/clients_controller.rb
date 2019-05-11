@@ -4,6 +4,11 @@ class Admin::ClientsController < ApplicationController
         @q = Client.ransack(params[:q])
         @clients = @q.result.includes(:primary_contact).page(params[:page])
         @tickets = Ticket.active.limit(3).load
+        
+        respond_to do |f|
+            f.js { render 'index.js.erb' }
+            f.html
+        end
     end
     
     def show

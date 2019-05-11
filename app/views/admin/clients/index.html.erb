@@ -3,9 +3,23 @@
         <div class='columns'>
             <div class='column is-three-quarters'>
                 <h1 class="title is-inline-block" style='margin-right: 15px;'>Clients</h1>
-                <i class="far fa-search fa-lg" style='margin-bottom: 5px;'></i>
-                <i class="far fa-filter fa-lg" style='margin-bottom: 5px; margin-left: 5px;'></i>
-                <i class="far fa-sort fa-lg" style='margin-bottom: 5px; margin-left: 5px;'></i>
+                <span class='is-inline-block'>
+                <%= search_form_for([:admin, @q], html: {style: 'width: 250px'}) do |f| %>
+                
+                <div class="field">
+  <p class="control has-icons-left" style='250px'>
+    <%= f.search_field :name_cont, class: 'client_search input is-rounded' %>
+    <span class="icon is-small is-left">
+      <i class="far fa-search"></i>
+    </span>
+  </p>
+</div>
+
+  <%= f.submit "search", class:"button is-info is-hidden" %>
+<% end %></span>
+                
+<!--                  <i class="far fa-filter fa-lg" style='margin-bottom: 5px; margin-left: 5px;'></i>
+              <i class="far fa-sort fa-lg" style='margin-bottom: 5px; margin-left: 5px;'></i> -->
                 <span class='is-pulled-right'>
                     <%= link_to(new_admin_client_path, class: "button is-primary") do %>
                             <i class="far fa-plus-circle" style='margin-right: 5px;'></i> Create Client
@@ -21,11 +35,13 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class='page_clients'>
                         <%= render @clients %>  
                     </tbody>
                 </table>
-                <%= paginate @clients %>
+                <div id='paginator'>
+                    <%= paginate @clients, remote: true %>
+                </div>
             </div>
             <div class='column'>
                 <section>

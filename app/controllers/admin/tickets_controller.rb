@@ -5,6 +5,11 @@ class Admin::TicketsController < ApplicationController
 #        @tickets = Ticket.includes(:client).all
         @q = Ticket.ransack(params[:q])
         @tickets = @q.result.includes(:client, :user).page(params[:page])
+        
+        respond_to do |f|
+            f.js { render 'index.js.erb' }
+            f.html
+        end
     end
     def show; end
   

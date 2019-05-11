@@ -11,11 +11,13 @@
                             <th><%= sort_link(@q, :severity) %></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class='page_tickets'>
                         <%= render @tickets %>
                     </tbody>
                 </table>  
-                <%= paginate @tickets %>
+                <div id='paginator'>
+                    <%= paginate @tickets, remote: true %>
+                </div>
             </div>
         </div>
     </div>

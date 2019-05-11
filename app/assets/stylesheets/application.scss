@@ -14,3 +14,15 @@
  *= require_self
  */
 @import "bulma";
+.clickable_row tr {
+    cursor: pointer
+}
+
+.client_search {
+    width: 15px;
+    transition: all .5s
+}
+
+.client_search:focus {
+    width: 250px;
+}
