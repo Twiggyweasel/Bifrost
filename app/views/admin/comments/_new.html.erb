@@ -1,0 +1,14 @@
+<%= form_for([:admin, @ticket, Comment.new], remote: true) do |f| %>
+    <div id='form_errors'>
+        
+    </div>
+    
+    <%= f.label :body, "New Comment", class: 'label' %>
+    <%= f.text_area :body, class: 'textarea' %>
+    <%= f.hidden_field(:user_id, value: 1) %>
+    <br />
+    <div class=''>
+        <%= button_tag(type: 'submit', class: 'button is-success is-medium is-fullwidth', "data-disable-with"=> "Just a moment...") do %><i class="far fa-paper-plane"></i><% end %>
+    </div>
+    </br>
+<% end %>

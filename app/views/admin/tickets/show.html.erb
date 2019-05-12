@@ -1,2 +1,40 @@
-<h1>Admin::Tickets#show</h1>
-<p>Find me in app/views/admin/tickets/show.html.erb</p>
+<section class='section'>
+    <div class='container'>
+        <div class='columns'>
+            <div class='column is-half is-offset-one-quarter'>
+                
+
+                <div class='box'>
+                    <h4 class='title is-4'>Request Details</h4>
+                    <p><%= @ticket.request_detail %>
+                    </p>
+                </div>
+                <h4 class='title is-4'>Request Updates</h4>
+                <hr>
+                    <div id='comment_form'>
+                        <%= render 'admin/comments/new' unless @ticket.status == 'resolved' %>
+                    </div>
+                <div id='comments_container'>
+                    <%= render partial: 'admin/comments/comment', collection: @ticket.comments %>
+                </div>
+            </div>
+            <div class='column'>
+                <div class='box' style='position: sticky; top: 75px;'>
+                    <h1 class='title is-inline-block'><%= @ticket.ticket_number %></h1>
+                    <%= status_styler(@ticket.status) %>
+                    <div id='ticket_details'>
+                        <span class='has-text-weight-bold'>Client:</span> <%= link_to(@ticket.client.name, admin_client_path(@ticket.client)) %><br />
+                        <span class='has-text-weight-bold'>Requestor:</span> <%= link_to(@ticket.user.full_name, admin_user_path(@ticket.user)) %>
+                    </div>
+                    <span id='last_response_block' class='is-italic'>
+                         <%= @ticket.last_response.strftime('Last Updated: %m/%d/%Y %T %p') %>
+                    </span>
+                    <br /><br />
+                    <%= link_to("Mark Complete", "", class: 'button is-primary is-fullwidth') %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

@@ -1,11 +1,12 @@
 class Ticket < ApplicationRecord
 #defaults
-    enum status: [ :active, :inactive, :potential, :resolved ]
+    enum status: [ :pending_review, :in_progress, :on_hold, :resolved ]
     enum severity: [ :P1, :P2, :P3, :P4]
     paginates_per 10  
 #Relationships  
     belongs_to :client
     belongs_to :user
+    has_many :comments, as: :commentable
   
 #validations
     validates :ticket_number, presence: true, allow_nil: true

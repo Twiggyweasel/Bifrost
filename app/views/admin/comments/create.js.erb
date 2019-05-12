@@ -1,0 +1,7 @@
+<% if @comment.errors.any? %>
+  $("#form_errors").html("<%= escape_javascript(render 'admin/shared/remote_errors', errors: @comment.errors.full_messages) %>");
+<% else %>
+    $("#comments_container").prepend("<%= escape_javascript(render 'admin/comments/comment', comment: @comment ) %>");
+    $("#last_response_block").html("<%= @content.last_response.strftime('Last Updated: %m/%d/%Y %T %p') %>");
+    $("#comment_body").val("");
+<% end %>

@@ -4,7 +4,7 @@ class Admin::TicketsController < ApplicationController
     def index
 #        @tickets = Ticket.includes(:client).all
         @q = Ticket.ransack(params[:q])
-        @tickets = @q.result.includes(:client, :user).page(params[:page])
+        @tickets = @q.result.includes(:client, :user, :comments).page(params[:page])
         
         respond_to do |f|
             f.js { render 'index.js.erb' }
